@@ -9,6 +9,7 @@ import (
 func main() {
 	res := solve.Solve(&solve.StacksData.A, &solve.StacksData.B, len(solve.StacksData.A))
 	fmt.Println(res)
+	
 	solve.StacksData.PrintVertical()
 	// var name string
 	// for {

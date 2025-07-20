@@ -9,7 +9,7 @@ import (
 var instructionsArr []string
 
 var StacksData = &instructions.Stacks{
-	A: []int{2, 1, 3, 6, 8, 5},
+	A: []int{5, 1, 2, 4, 3},
 	B: []int{},
 }
 
@@ -21,6 +21,15 @@ func minIndex(a *[]int) int {
 		}
 	}
 	return minIndex
+}
+
+func isSorted(a []int) bool {
+	for i := 0; i < len(a)-1; i++ {
+		if a[i] > a[i+1] {
+			return false
+		}
+	}
+	return true
 }
 
 func Solve(a, b *[]int, maxLen int) []string {
@@ -47,13 +56,17 @@ func Solve(a, b *[]int, maxLen int) []string {
 				StacksData.Ra()
 			}
 		}
-		fmt.Println(StacksData)
 	}
 
 	for len(*b) > 0 {
 		instructionsArr = append(instructionsArr, "pa")
 		StacksData.Pa()
-		fmt.Println(StacksData)
+	}
+
+	if !isSorted(*a) {
+		fmt.Println("❌ Not sorted correctly!")
+	} else {
+		fmt.Println("✅ Sorted correctly!")
 	}
 
 	return instructionsArr
